@@ -2,6 +2,9 @@
 // Affiche la date au format français avec l'année à 4 chiffres.
 date_default_timezone_set('Europe/Paris');
 $day = date('d/m/Y');
+
+// Affiche la date du jour - 22 jour.
+$minus20Day = date('d/m/Y', strtotime('-22 days'));
 ?>
 
 <!DOCTYPE html>
@@ -10,15 +13,15 @@ $day = date('d/m/Y');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partie 9 - Exercice 1</title>
+    <title>Partie 9 - Exercice 7</title>
 </head>
 
 <body>
-    <p>Afficher la date courante en respectant la forme jj/mm/aaaa (ex : 16/05/2016).</p>
+    <p>Afficher la date du jour - 22 jours.</p>
 
-    <?= 'La date du jour est ' . $day ?>
-
-
+    <?= 'La date du jour est ' . $day . '<br>'?>
+    <?= 'La date du jour - 22 jours est ' . $minus20Day ?>
+  
 </body>
 
 </html>

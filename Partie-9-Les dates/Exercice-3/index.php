@@ -1,4 +1,5 @@
 <?php
+// Affiche la date au format français avec le jour de la semaine et le mois en toutes lettres.
 setlocale(LC_TIME, ['fr_FR','french','French_France.1252','fr_FR.ISO8859-1','fra']);
 $day = utf8_encode(strftime('%A %#d %B %Y'));
 ?>

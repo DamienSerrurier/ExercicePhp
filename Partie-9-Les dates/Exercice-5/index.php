@@ -1,9 +1,17 @@
 <?php
-setlocale(LC_TIME, ['fr_FR', 'french', 'French_France.1252', 'fr_FR.ISO8859-1', 'fra']);
-date_default_timezone_set('Europe/Paris');
-$day = utf8_encode(strftime('%A %e %B %Y %H:%M'));
-$newDate = utf8_encode(strftime('%A %#d %B %Y %H:%M', mktime(15, 0, 0, 8, 2, 2016)));
+$date1 = "23-12-2020"; //date fr le 23 décembre 2020
+$date2 = "16-05-2016"; // date fr le 16 mai 2016
 
+// On transforme les 2 dates en timestamp
+$date1 = strtotime($date1);
+$date2 = strtotime($date2);
+ 
+// On récupère la différence de timestamp entre les 2 précédents
+$nbDaysTimestamp = $date1 - $date2;
+ 
+// ** Pour convertir le timestamp (exprimé en secondes) en jours **
+// On sait que 1 heure = 60 secondes * 60 minutes et que 1 jour = 24 heures donc :
+$nbDays = $nbDaysTimestamp/86400; // 86 400 = 60*60*24
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +24,10 @@ $newDate = utf8_encode(strftime('%A %#d %B %Y %H:%M', mktime(15, 0, 0, 8, 2, 201
 </head>
 
 <body>
-    <p>Afficher le timestamp du jour.
-        Afficher le timestamp du mardi 2 août 2016 à 15h00.</p>
+    <p>Afficher le nombre de jour qui sépare la date du jour avec le 16 mai 2016.</p>
 
-    <?= 'La date du jour est ' . $day . '<br>' ?>
-    <?= 'La nouvelle date est ' . $newDate ?>
-
+    <?= 'Nombre de jours : '.$nbDays ?>
+  
 </body>
 
 </html>
