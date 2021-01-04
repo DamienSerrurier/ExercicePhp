@@ -58,7 +58,7 @@ var_dump($_POST);
     </p>
 
     <?php if ($showForm) { ?>
-        <form <?php $display ?> action="" method="post">
+        <form action="" method="post">
             <label for="gender">Civilité</label>
             <select name="gender" id="gender">
                 <optgroup label="Genre">

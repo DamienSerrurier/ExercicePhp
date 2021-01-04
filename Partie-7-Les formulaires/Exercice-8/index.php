@@ -83,7 +83,7 @@ var_dump($_FILES);
     </p>
 
     <?php if ($showForm) { ?>
-        <form <?php $display ?> action="" method="post" enctype="multipart/form-data">
+        <form <?php ?> action="" method="post" enctype="multipart/form-data">
             <label for="gender">Civilité</label>
             <select name="gender" id="gender">
                 <optgroup label="Genre">
