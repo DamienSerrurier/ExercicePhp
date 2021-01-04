@@ -1,6 +1,7 @@
 <?php
 // Affiche la date au format français avec l'année à 2 chiffres.
-$day = date('d/m/y');
+date_default_timezone_set('Europe/Paris');
+$day = date('d-m-y');
 ?>
 
 <!DOCTYPE html>
