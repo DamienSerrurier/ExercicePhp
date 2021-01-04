@@ -1,4 +1,10 @@
 <?php
+// version alternative de Thomas
+// $origin = date_create('2016-05-16');
+// $target = date_create('2020-12-22');
+// $interval = date_diff($origin, $target);
+
+// Ma version
 $date1 = "23-12-2020"; //date fr le 23 décembre 2020
 $date2 = "16-05-2016"; // date fr le 16 mai 2016
 
