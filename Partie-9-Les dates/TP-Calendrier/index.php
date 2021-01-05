@@ -64,10 +64,7 @@ if (isset($_POST['year'], $_POST['month'])) {
         En fonction des choix, afficher un calendrier comme celui ci :</p>
     <img src="https://icalendrier.fr/media/imprimer/2017/mensuel/calendrier-2017-mensuel-bigthumb.png" alt="Image pointant vers un calendrier">
 
-
-
-</body>
-<form action="" method="post">
+    <form action="" method="post">
     <label for="month">Mois</label>
     <select name="month" id="month">
         <?php foreach ($months as $month) : ?>
@@ -86,6 +83,7 @@ if (isset($_POST['year'], $_POST['month'])) {
 </form>
 
 <p>Le mois et l'année sont : <?= isset($_POST['month']) ? $_POST['month'] : '' ?> - <?= isset($_POST['year']) ? $_POST['year'] : '' ?></p>
+
 <table>
     <thead>
         <tr>
@@ -96,8 +94,9 @@ if (isset($_POST['year'], $_POST['month'])) {
     </thead>
     <tbody>
         <tr>
-            <?php for ($case = 1; $case < ($daysInMonth + ($firtsDayInMonth)); $case++) : ?>
+            <?php for ($case = 1; $case < ($daysInMonth + ($firtsDayInMonth - 1)); $case++) : ?>
                 <td><?= $case ?></td>
+
                 <?php if ($case % 7 == 0) : ?>
         </tr>
         <tr>
@@ -105,9 +104,10 @@ if (isset($_POST['year'], $_POST['month'])) {
     <?php endfor ?>
         </tr>
     </tbody>
-
-
 </table>
 
+
+
+</body>
 
 </html>
