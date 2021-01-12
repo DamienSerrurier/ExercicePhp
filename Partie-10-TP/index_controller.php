@@ -1,20 +1,5 @@
 <?php
-// On vérifie la variable super global $_POST, si elle contient des données elle affiche les messages de validation, sinon elle affiche rien.
-
-
-// Utilisation des regex pour sécuriser des données.
-$regexText = '/^[a-zA-Z-éèàôêçâîù ]+$/';
-$regexTextArea = '';
-$regexDate = '/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/';
-$regexTelNumber = '/^(0|\+33 )[1-9]([-. ]?[0-9]{2} ){3}([-. ]?[0-9]{2})$/';
-$regexNumber = '/^([0-1]\d{1}$|\d{0,2})$/';
-$regexEmploymentCenter = '/^([0-9]{7}+[A-Z])$/';
-$regexBadge = '/^[0-9]{0,2}$/';
-
 var_dump($_POST);
-
-$messageErrors = [];
-$messageSuccess = [];
 
 $diplomaArray = [
     1 => 'Sans',
@@ -37,6 +22,18 @@ $validedChoice = [
 // On vérifie si la variable super global $_POST contient des données, ensuite on exécute plusieurs test de sécurité et affiche des message suivant la validation de la condition
 if (isset($_POST['submitButton'])) {
 
+    $messageErrors = [];
+    $messageSuccess = [];
+
+    // Utilisation des regex pour sécuriser des données.
+    $regexText = '/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.\'-]+$/';
+    $regexTextArea = '/^([A-Za-z0-9]+\.[A-Za-z0-9]+(\r)?(\n)?)+$/';
+    $regexDate = '/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/';
+    $regexTelNumber = '/^(0|\+33 )[1-9]([-. ]?[0-9]{2} ){3}([-. ]?[0-9]{2})$/';
+    $regexNumber = '/^([0-1]\d{1}$|\d{0,2})$/';
+    $regexEmploymentCenter = '/^([0-9]{7}+[A-Z])$/';
+    $regexBadge = '/^[0-9]{0,2}$/';
+
     if (isset($_POST['lastname'])) {
 
         if (empty($_POST['lastname'])) {
@@ -45,7 +42,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['lastname'] = 'Attention ! Veuillez indiquer votre Nom.';
         } else {
             $securedLastname =  htmlspecialchars($_POST['lastname']);
-            $messageSuccess['lastname'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['lastname'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -57,7 +54,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['firstName'] = 'Attention ! Veuillez indiquer votre Prénom.';
         } else {
             $securedFirstName =  htmlspecialchars($_POST['firstName']);
-            $messageSuccess['firstName'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['firstName'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -69,7 +66,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['birth'] = 'Attention ! Veuillez indiquer votre de de Naissance.';
         } else {
             $securedBirth =  htmlspecialchars($_POST['birth']);
-            $messageSuccess['birth'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['birth'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -81,7 +78,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['country'] = 'Attention ! Veuillez indiquer votre Pays.';
         } else {
             $securedCountry =  htmlspecialchars($_POST['country']);
-            $messageSuccess['country'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['country'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -93,7 +90,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['nationality'] = 'Attention ! Veuillez indiquer votre Nationalité.';
         } else {
             $securedNationality =  htmlspecialchars($_POST['nationality']);
-            $messageSuccess['nationality'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['nationality'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -107,7 +104,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['address'] = 'Attention ! Votre adresse doit être supérieure à 50 caractères.';
         } else {
             $securedAddress =  htmlspecialchars($_POST['address']);
-            $messageSuccess['address'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['address'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -120,7 +117,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['email'] = 'Attention ! Veuillez indiquer votre Email.';
         } else {
             $securedEmail =  htmlspecialchars($_POST['email']);
-            $messageSuccess['email'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['email'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -132,7 +129,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['tel'] = 'Attention ! Veuillez indiquer votre Numéro de téléphone.';
         } else {
             $securedTel =  htmlspecialchars($_POST['tel']);
-            $messageSuccess['tel'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['tel'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -140,7 +137,7 @@ if (isset($_POST['submitButton'])) {
         $messageErrors['diploma'] = 'Veuillez sélectionner votre Niveau d\'étude.';
     } else {
         $securedDiploma =  htmlspecialchars($_POST['diploma']);
-        $messageSuccess['diploma'] = '<i class"fas fa-check formValid"></i>';
+        $messageSuccess['diploma'] = '<i class="fas fa-check formValid"></i>';
     }
 
     if (isset($_POST['employmentCenter'])) {
@@ -151,7 +148,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['employmentCenter'] = 'Attention ! Veuillez indiquer votre Identifiant Pôle emploi.';
         } else {
             $securedEmploymentCenter =  htmlspecialchars($_POST['employmentCenter']);
-            $messageSuccess['employmentCenter'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['employmentCenter'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -163,7 +160,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['numberBadge'] = 'Attention ! Veuillez indiquer votre Nombre de badge.';
         } else {
             $securedBadge =  htmlspecialchars($_POST['numberBadge']);
-            $messageSuccess['numberBadge'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['numberBadge'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -176,7 +173,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['codeCademy'] = 'Attention ! Veuillez indiquer un lien valide.';
         } else {
             $securedUrl =  htmlspecialchars($_POST['codeCademy']);
-            $messageSuccess['codeCademy'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['codeCademy'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -188,7 +185,7 @@ if (isset($_POST['submitButton'])) {
             $messageErrors['hero'] = 'Attention ! Veuillez indiquer quel Héro êtes-vous.';
         } else {
             $securedHero =  htmlspecialchars($_POST['hero']);
-            $messageSuccess['hero'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['hero'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -196,11 +193,11 @@ if (isset($_POST['submitButton'])) {
 
         if (empty($_POST['why'])) {
             $messageErrors['why'] = 'Veuillez remplir ce champ.';
-        } elseif (!preg_match($regexText, $_POST['why'])) {
+        } elseif (!preg_match($regexTextArea, $_POST['why'])) {
             $messageErrors['why'] = 'Attention ! Veuillez indiquer pourquoi avoir fait ce choix.';
         } else {
             $securedWhy =  htmlspecialchars($_POST['why']);
-            $messageSuccess['why'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['why'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -208,32 +205,32 @@ if (isset($_POST['submitButton'])) {
         $messageErrors['hackTec'] = 'Veuillez sélectionner un ou plusieurs choix.';
     } else {
         $securedHackTeck =  htmlspecialchars($_POST['hackTec']);
-        $messageSuccess['hackTec'] = '<i class"fas fa-check formValid"></i>';
+        $messageSuccess['hackTec'] = '<i class="fas fa-check formValid"></i>';
     }
 
     if (!array_key_exists($_POST['hackInf'], $hackChoice)) {
         $messageErrors['hackInf'] = 'Veuillez sélectionner un ou plusieurs choix.';
     } else {
         $securedHackInf =  htmlspecialchars($_POST['hackInf']);
-        $messageSuccess['hackInf'] = '<i class"fas fa-check formValid"></i>';
+        $messageSuccess['hackInf'] = '<i class="fas fa-check formValid"></i>';
     }
 
     if (!array_key_exists($_POST['hackElse'], $hackChoice)) {
         $messageErrors['hackElse'] = 'Veuillez sélectionner un ou plusieurs choix.';
     } else {
         $securedHackElse =  htmlspecialchars($_POST['hackElse']);
-        $messageSuccess['hackElse'] = '<i class"fas fa-check formValid"></i>';
+        $messageSuccess['hackElse'] = '<i class="fas fa-check formValid"></i>';
     }
 
     if (isset($_POST['explanation'])) {
 
         if (empty($_POST['explanation'])) {
             $messageErrors['explanation'] = 'Veuillez remplir ce champ.';
-        } elseif (!preg_match($regexText, $_POST['explanation'])) {
+        } elseif (!preg_match($regexTextArea, $_POST['explanation'])) {
             $messageErrors['explanation'] = 'Attention ! Veuillez indiquer votre explication.';
         } else {
             $securedExplanation =  htmlspecialchars($_POST['explanation']);
-            $messageSuccess['explanation'] = '<i class"fas fa-check formValid"></i>';
+            $messageSuccess['explanation'] = '<i class="fas fa-check formValid"></i>';
         }
     }
 
@@ -241,28 +238,31 @@ if (isset($_POST['submitButton'])) {
         $messageErrors['validate'] = 'Veuillez sélectionner un ou plusieurs choix.';
     } else {
         $securedHack =  htmlspecialchars($_POST['validate']);
-        $messageSuccess['validate'] = '<i class"fas fa-check formValid"></i>';
+        $messageSuccess['validate'] = '<i class="fas fa-check formValid"></i>';
     }
 
-    if (count($messageErrors) == 0) {
-        $securedLastname =  htmlspecialchars($_POST['lastname']);
-        $securedFirstName =  htmlspecialchars($_POST['firstName']);
-        $securedBirth =  htmlspecialchars($_POST['birth']);
-        $securedCountry =  htmlspecialchars($_POST['country']);
-        $securedNationality =  htmlspecialchars($_POST['nationality']);
-        $securedAddress =  htmlspecialchars($_POST['address']);
-        $securedEmail =  htmlspecialchars($_POST['email']);
-        $securedTel =  htmlspecialchars($_POST['tel']);
-        $securedDiploma =  htmlspecialchars($_POST['diploma']);
-        $securedEmploymentCenter =  htmlspecialchars($_POST['employmentCenter']);
-        $securedBadge =  htmlspecialchars($_POST['numberBadge']);
-        $securedUrl =  htmlspecialchars($_POST['codeCademy']);
-        $securedHero =  htmlspecialchars($_POST['hero']);
-        $securedWhy =  htmlspecialchars($_POST['why']);
-        $securedHackTeck =  htmlspecialchars($_POST['hackTec']);
-        $securedHackInf =  htmlspecialchars($_POST['hackInf']);
-        $securedHackElse =  htmlspecialchars($_POST['hackElse']);
-        $securedExplanation =  htmlspecialchars($_POST['explanation']);
-        $securedHack =  htmlspecialchars($_POST['validate']);
+    if (isset($messageErrors)) {
+        
+        if (count($messageErrors) == 0) {
+            $securedLastname =  htmlspecialchars($_POST['lastname']);
+            $securedFirstName =  htmlspecialchars($_POST['firstName']);
+            $securedBirth =  htmlspecialchars($_POST['birth']);
+            $securedCountry =  htmlspecialchars($_POST['country']);
+            $securedNationality =  htmlspecialchars($_POST['nationality']);
+            $securedAddress =  htmlspecialchars($_POST['address']);
+            $securedEmail =  htmlspecialchars($_POST['email']);
+            $securedTel =  htmlspecialchars($_POST['tel']);
+            $securedDiploma =  htmlspecialchars($_POST['diploma']);
+            $securedEmploymentCenter =  htmlspecialchars($_POST['employmentCenter']);
+            $securedBadge =  htmlspecialchars($_POST['numberBadge']);
+            $securedUrl =  htmlspecialchars($_POST['codeCademy']);
+            $securedHero =  htmlspecialchars($_POST['hero']);
+            $securedWhy =  htmlspecialchars($_POST['why']);
+            $securedHackTeck =  htmlspecialchars($_POST['hackTec']);
+            $securedHackInf =  htmlspecialchars($_POST['hackInf']);
+            $securedHackElse =  htmlspecialchars($_POST['hackElse']);
+            $securedExplanation =  htmlspecialchars($_POST['explanation']);
+            $securedHack =  htmlspecialchars($_POST['validate']);
+        }
     }
 }

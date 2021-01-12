@@ -40,7 +40,7 @@ require_once 'index_controller.php';
         </ul>
         A la validation de ces informations, il faudra les afficher dans la même page à la place du formulaire.
     </div>
-
+   
     <form action="index.php" method="post" enctype="multipart/form-data" class="form container-fluid col-lg-4">
         <h1 class="text-center text-danger">Formulaire de la Manu</h1>
         <fieldset class=" border my-5">
@@ -103,12 +103,12 @@ require_once 'index_controller.php';
 
             <div class="container">
                 <label for="validate" class="form-label">Niveau d'étude</label>
-                <select name="diploma" id="diploma" value="<?= isset($securedDiploma) ? $securedDiploma : '' ?>" class="form-select">
+                <select name="diploma" id="diploma" class="form-select">
                     <option value="">Choisir</option>
-                    <option value="1" <?= isset($_POST['diploma']) && $_POST['diploma'] == 1 ? "selected" : '' ?>>Sans</option>
-                    <option value="2" <?= isset($_POST['diploma']) && $_POST['diploma'] == 2 ? "selected" : '' ?>>Bac</option>
-                    <option value="3" <?= isset($_POST['diploma']) && $_POST['diploma'] == 3 ? "selected" : '' ?>>Bac + 2</option>
-                    <option value="4" <?= isset($_POST['diploma']) && $_POST['diploma'] == 4 ? "selected" : '' ?>>Bac + 3 ou supérieur</option>
+                    <option value="1" <?= isset($securedDiploma) && $securedDiploma == 1 ? "selected" : '' ?>>Sans</option>
+                    <option value="2" <?= isset($securedDiploma) && $securedDiploma == 2 ? "selected" : '' ?>>Bac</option>
+                    <option value="3" <?= isset($securedDiploma) && $securedDiploma == 3 ? "selected" : '' ?>>Bac + 2</option>
+                    <option value="4" <?= isset($securedDiploma) && $securedDiploma == 4 ? "selected" : '' ?>>Bac + 3 ou supérieur</option>
                 </select>
                 <p class="displayMessage">
                     <?= isset($messageErrors['diploma']) ? $messageErrors['diploma'] : '' ?><?= isset($messageSuccess['diploma']) ? $messageSuccess['diploma'] : '' ?>
