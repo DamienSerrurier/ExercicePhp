@@ -201,26 +201,61 @@ if (isset($_POST['submitButton'])) {
         }
     }
 
-    if (!array_key_exists($_POST['hackTec'], $hackChoice)) {
-        $messageErrors['hackTec'] = 'Veuillez sélectionner un ou plusieurs choix.';
+    if (!empty($_POST['hack'])) {
+
+        if (!in_array($_POST['hack'], $hackChoice)) {
+
+            foreach ($_POST['hack'] as $value) {
+
+                if ($value == 1) {
+                    var_dump($_POST['hack']);
+                    $securedHackTeck = htmlspecialchars($value);
+                    $messageSuccess['hackTec'] = '<i class="fas fa-check formValid"></i>';
+                    var_dump($hackChoice[1]);
+                } elseif ($value == 2) {
+                    $securedHackInf = htmlspecialchars($value);
+                    $messageSuccess['hackInf'] = '<i class="fas fa-check formValid"></i>';
+                    var_dump($hackChoice[2]);
+                } else {
+                    $securedHackElse = htmlspecialchars($value);
+                    $messageSuccess['hackElse'] = '<i class="fas fa-check formValid"></i>';
+                    var_dump($hackChoice[3]);
+                }
+            }
+        }
     } else {
-        $securedHackTeck =  htmlspecialchars($_POST['hackTec']);
-        $messageSuccess['hackTec'] = '<i class="fas fa-check formValid"></i>';
+        $messageErrors['hack'] = 'Veuillez sélectionner un ou plusieurs choix.';
     }
 
-    if (!array_key_exists($_POST['hackInf'], $hackChoice)) {
-        $messageErrors['hackInf'] = 'Veuillez sélectionner un ou plusieurs choix.';
-    } else {
-        $securedHackInf =  htmlspecialchars($_POST['hackInf']);
-        $messageSuccess['hackInf'] = '<i class="fas fa-check formValid"></i>';
-    }
+    // if (isset($_POST['hackTec'])) {
 
-    if (!array_key_exists($_POST['hackElse'], $hackChoice)) {
-        $messageErrors['hackElse'] = 'Veuillez sélectionner un ou plusieurs choix.';
-    } else {
-        $securedHackElse =  htmlspecialchars($_POST['hackElse']);
-        $messageSuccess['hackElse'] = '<i class="fas fa-check formValid"></i>';
-    }
+    //     if (!array_key_exists($_POST['hackTec'], $hackChoice)) {
+    //         $messageErrors['hackTec'] = 'Veuillez sélectionner un ou plusieurs choix.';
+    //     } else {
+    //         $securedHackTeck =  htmlspecialchars($_POST['hackTec']);
+    //         $messageSuccess['hackTec'] = '<i class="fas fa-check formValid"></i>';
+    //     }
+    // }
+
+    // if (isset($_POST['hackInf'])) {
+
+    //     if (!array_key_exists($_POST['hackInf'], $hackChoice)) {
+    //         $messageErrors['hackInf'] = 'Veuillez sélectionner un ou plusieurs choix.';
+    //     } else {
+    //         $securedHackInf =  htmlspecialchars($_POST['hackInf']);
+    //         $messageSuccess['hackInf'] = '<i class="fas fa-check formValid"></i>';
+    //     }
+    // }
+
+    // if (isset($_POST['hackElse'])) {
+
+    //     if (!array_key_exists($_POST['hackElse'], $hackChoice)) {
+    //         $messageErrors['hackElse'] = 'Veuillez sélectionner un ou plusieurs choix.';
+    //     } else {
+    //         $securedHackElse =  htmlspecialchars($_POST['hackElse']);
+    //         $messageSuccess['hackElse'] = '<i class="fas fa-check formValid"></i>';
+    //     }
+    // }
 
     if (isset($_POST['explanation'])) {
 
@@ -234,15 +269,20 @@ if (isset($_POST['submitButton'])) {
         }
     }
 
-    if (!array_key_exists($_POST['validate'], $validedChoice)) {
-        $messageErrors['validate'] = 'Veuillez sélectionner un ou plusieurs choix.';
-    } else {
-        $securedHack =  htmlspecialchars($_POST['validate']);
-        $messageSuccess['validate'] = '<i class="fas fa-check formValid"></i>';
+    if (isset($_POST['validate'])) {
+
+        if (!array_key_exists($_POST['validate'], $validedChoice)) {
+            $messageErrors['validate'] = 'Veuillez sélectionner un ou plusieurs choix.';
+        } else {
+            $securedHack =  htmlspecialchars($_POST['validate']);
+            $messageSuccess['validate'] = '<i class="fas fa-check formValid"></i>';
+        }
     }
 
+
+
     if (isset($messageErrors)) {
-        
+
         if (count($messageErrors) == 0) {
             $securedLastname =  htmlspecialchars($_POST['lastname']);
             $securedFirstName =  htmlspecialchars($_POST['firstName']);
@@ -258,9 +298,9 @@ if (isset($_POST['submitButton'])) {
             $securedUrl =  htmlspecialchars($_POST['codeCademy']);
             $securedHero =  htmlspecialchars($_POST['hero']);
             $securedWhy =  htmlspecialchars($_POST['why']);
-            $securedHackTeck =  htmlspecialchars($_POST['hackTec']);
-            $securedHackInf =  htmlspecialchars($_POST['hackInf']);
-            $securedHackElse =  htmlspecialchars($_POST['hackElse']);
+            $securedHackTeck =  htmlspecialchars($value);
+            $securedHackInf =  htmlspecialchars($value);
+            $securedHackElse =  htmlspecialchars($value);
             $securedExplanation =  htmlspecialchars($_POST['explanation']);
             $securedHack =  htmlspecialchars($_POST['validate']);
         }

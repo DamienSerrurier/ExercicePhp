@@ -154,23 +154,23 @@ require_once 'index_controller.php';
                 <div class="form-check">
                     <div>
                         <label for="hackTec" class="form-check-label">Hack technique</label>
-                        <input type="checkbox" name="hackTec" id="hackTec" value="1"<?= isset($securedHackTeck) && $securedHackTeck == 1 ? "checked" : '' ?> class="form-check-input">
+                        <input type="checkbox" name="hack[]" id="hackTec" value="1"<?= isset($securedHackTeck) && $securedHackTeck == 1 ? "checked" : '' ?> class="form-check-input">
                         <p class="displayMessage">
-                            <?= isset($messageErrors['hackTec']) ? $messageErrors['hackTec'] : '' ?><?= isset($messageSuccess['hackTec']) ? $messageSuccess['hackTec'] : '' ?>
+                            <?= isset($messageSuccess['hackTec']) ? $messageSuccess['hackTec'] : '' ?>
                         </p>
                     </div>
                     <div>
                         <label for="hackInf" class="form-check-label">Hack informatique</label>
-                        <input type="checkbox" name="hackInf" id="hackInf" value="2"<?= isset($securedHackInf) && $securedHackInf == 2 ? "checked" : '' ?> class="form-check-input">
+                        <input type="checkbox" name="hack[]" id="hackInf" value="2"<?= isset($securedHackInf) && $securedHackInf == 2 ? "checked" : '' ?> class="form-check-input">
                         <p class="displayMessage">
-                            <?= isset($messageErrors['hackInf']) ? $messageErrors['hackInf'] : '' ?><?= isset($messageSuccess['hackInf']) ? $messageSuccess['hackInf'] : '' ?>
+                            <?= isset($messageSuccess['hackInf']) ? $messageSuccess['hackInf'] : '' ?>
                         </p>
                     </div>
                     <div>
                         <label for="hackElse" class="form-check-label">Autre</label>
-                        <input type="checkbox" name="hackElse" id="hackElse" value="3"<?= isset($securedHackElse) && $securedHackElse == 3 ? "checked" : '' ?> class="form-check-input">
+                        <input type="checkbox" name="hack[]" id="hackElse" value="3"<?= isset($securedHackElse) && $securedHackElse == 3 ? "checked" : '' ?> class="form-check-input">
                         <p class="displayMessage">
-                            <?= isset($messageErrors['hackElse']) ? $messageErrors['hackElse'] : '' ?><?= isset($messageSuccess['hackElse']) ? $messageSuccess['hackElse'] : '' ?>
+                            <?= isset($messageErrors['hack']) ? $messageErrors['hack'] : '' ?><?= isset($messageSuccess['hackElse']) ? $messageSuccess['hackElse'] : '' ?>
                         </p>
                     </div>
                 </div>
