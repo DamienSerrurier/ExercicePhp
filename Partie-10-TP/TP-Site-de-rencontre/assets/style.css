@@ -1,0 +1,191 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(../assets/fonts/Quicksand-Regular.ttf) format("truetype");
+}
+
+html,
+body {
+    background-color: #654A71;
+    font-family: Quicksand;
+}
+
+/* Solution divine du footer */
+
+.wrapper {
+    min-height: calc(100vh - 246px);
+}
+
+label {
+    color: white;
+}
+
+.displayMessage {
+    height: 2rem;
+    text-align: center;
+    color: indianred;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+}
+
+.formValid {
+    color: #00E8CC;
+}
+
+.fields {
+    border-radius: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: 0;
+    box-shadow: 1px 3px 3px 1px black;
+}
+
+.bgColor {
+    background-color: #191919;
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px 0px black;
+}
+
+@media (max-width: 600px) {
+    .bgColor {
+        border-radius: 0px;
+    }
+}
+
+.titleColorPink {
+    color: #9A0034;
+}
+
+.titleColorBlue {
+    color: #00769B;
+}
+
+.navbarColor {
+    background-color: #121212;
+}
+
+.sendBtn {
+    background-color: #9A0034;
+    color: white;
+    width: 10rem;
+}
+
+.sendBtn:hover {
+    color: white;
+    box-shadow: 1px 1px 15px 0px #C70043;
+}
+
+.userInfosList {
+    list-style-type: none;
+    padding: 1.5rem;
+    color: white;
+    border-radius: 10px;
+}
+
+.navbar-brand:hover {
+    color: white !important;
+    font-weight: bold;
+}
+
+.modal-content {
+    background-color: #121212;
+}
+
+.cancelBtn {
+    background-color: #121212;
+}
+
+.cancelBtn:hover {
+    box-shadow: 1px 1px 15px 0px #121212;
+}
+
+.imgSize {
+    width: 100%;
+    height: 15rem;
+}
+
+.likeBtn {
+    color: #AD0F2C;
+}
+
+.likeBtn:hover {
+    color: #AD0F2C;
+}
+
+.textBlack {
+    color: black;
+}
+
+/* Bouton like dans l'état standard */
+
+.corazon {
+    position: relative;
+    width: 0.9rem;
+    height: 0.9rem;
+    background: #b85878;
+    transform: rotate(45deg);
+}
+
+.corazon::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #b85878;
+    position: absolute;
+    top: -50%;
+    left: 0;
+    border-radius: 50%;
+}
+
+.corazon:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #b85878;
+    position: absolute;
+    bottom: 0%;
+    right: 50%;
+    border-radius: 50%;
+}
+
+/* Bouton like survolé */
+
+.corazon:hover {
+    position: relative;
+    width: 0.9rem;
+    height: 0.9rem;
+    transform: rotate(45deg);
+    box-shadow: 1px 1px 20px 3px #C70043;
+}
+
+/* Bouton like version cliquée */
+
+.corazonV2 {
+    position: relative;
+    width: 0.9rem;
+    height: 0.9rem;
+    background: #C70043;
+    transform: rotate(45deg);
+    box-shadow: 1px 1px 20px 3px #C70043;
+}
+
+.corazonV2::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #C70043;
+    position: absolute;
+    top: -50%;
+    left: 0;
+    border-radius: 50%;
+}
+
+.corazonV2:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #C70043;
+    position: absolute;
+    bottom: 0%;
+    right: 50%;
+    border-radius: 50%;
+}
